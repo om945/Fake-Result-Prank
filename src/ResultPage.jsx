@@ -31,7 +31,7 @@ const ResultPage = () => {
             <div className="flex flex-col items-center">
               <img src={cat_meme} className="h-[15rem] sm:h-[25rem]" />
               <span className="text-[2rem]">SORRY!</span>
-              <span className="text-0.5rem">from Om and Ratnesh</span>
+              <span className="text-0.3rem">from Om and Ratnesh</span>
             </div>
           ) : (
             <img
