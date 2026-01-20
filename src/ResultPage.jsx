@@ -9,7 +9,7 @@ const ResultPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowMeme(true);
-    }, "3000");
+    }, "4000");
   }, []);
 
   const playAudio = async () => {
