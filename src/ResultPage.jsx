@@ -1,15 +1,37 @@
 import { useEffect, useState } from "react";
-import result_img from "./result_img.jpg";
+import result_img from "./result_img.jpeg";
 import cat_meme from "./cat_meme.jpg";
 
 const ResultPage = () => {
   const [showMeme, setShowMeme] = useState(false);
+  const [audioPlayed, setAudioPlayed] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setShowMeme(true);
     }, "3000");
   }, []);
+
+  const playAudio = async () => {
+    if (audioPlayed) return;
+
+    const audio = document.querySelector('audio');
+    if (audio) {
+      try {
+        await audio.play();
+        setAudioPlayed(true);
+      } catch (error) {
+        console.log('Audio autoplay blocked:', error);
+        // Optionally show a play button or message to user
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (showMeme) {
+      playAudio();
+    }
+  }, [showMeme]);
 
   return (
     <div className="min-h-screen flex flex-col items-center">
@@ -19,18 +41,22 @@ const ResultPage = () => {
             SHIVAJI UNIVERSITY, KOLHAPUR
           </h1>
           <h2 className="font-[700] text-center text-[0.8rem] mobile:text-[1rem] md:text-[1.2rem]">
-            Online Statement of Marks for : B.Tech.CBCS Part 2 Semester 4
-            (Semester-4)
+            Online Statement of Marks for : B.Tech.CBCS Part 3 Semester 5
+            (Semester-5)
           </h2>
           <h3 className="font-[700] text-center text-[0.8rem] mobile:text-[1rem] md:text-[1.2rem]">
-            Examination : May - 2025
+            Examination : Dec - 2025
           </h3>
         </div>
         <div className="flex flex-col items-center">
           {showMeme ? (
+
             <div className="flex flex-col items-center">
-              <img src={cat_meme} className="h-[15rem] sm:h-[25rem]" />
-              <span className="text-[2rem]">SORRY!</span>
+              <audio>
+                <source src="/yaaaa.mpeg" type="audio/mpeg" />
+              </audio>
+              <img src="/image.png" className="h-[15rem] sm:h-[25rem]" />
+              {/* <span className="text-[2rem]">SORRY!</span> */}
             </div>
           ) : (
             <img
